@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo.test.mapper.AnswerQuestionLogDetailMapper">
+
+	<delete id="deleteByMainId" parameterType="java.lang.String">
+		DELETE 
+		FROM  answer_question_log_detail 
+		WHERE
+			 parint_id = #{mainId} 	</delete>
+	
+	<select id="selectByMainId" parameterType="java.lang.String" resultType="org.jeecg.modules.demo.test.entity.AnswerQuestionLogDetail">
+		SELECT * 
+		FROM  answer_question_log_detail
+		WHERE
+			 parint_id = #{mainId} 	</select>
+    <select id="getAvgSocereByPeople"
+            resultType="org.jeecg.modules.demo.chars.vo.PersonalityShortcomingsTendencies">
+		select paper_type,avg(total_score) as score from answer_question_log where create_by = #{username} group by paper_type
+	</select>
+<!--	<select id="getAvgSocereByPeople"-->
+<!--			resultType="org.jeecg.modules.demo.chars.vo.PersonalityShortcomingsTendencies"></select>-->
+</mapper>

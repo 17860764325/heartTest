@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo.test.mapper.ExaminationTitleMapper">
+
+	<delete id="deleteByMainId" parameterType="java.lang.String">
+		DELETE 
+		FROM  examination_title 
+		WHERE
+			 examination_code = #{mainId} 	</delete>
+	
+	<select id="selectByMainId" parameterType="java.lang.String" resultType="org.jeecg.modules.demo.test.entity.ExaminationTitle">
+		SELECT * ,
+		       title.id as questionId
+		FROM  examination_title left join title on examination_title.title_code = title.title_code
+		WHERE
+			 examination_code = #{mainId} 	</select>
+</mapper>
